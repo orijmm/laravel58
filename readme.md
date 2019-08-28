@@ -4,6 +4,8 @@
 
 ### php artisan key:generate
 
+### npm install
+
 ### Config database env
 
 ### php artisan migrate --seed

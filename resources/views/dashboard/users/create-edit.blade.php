@@ -2,7 +2,6 @@
 
 @section('content')
 <h1 class="h3 mb-4 text-gray-800">@if($edit) Edit User @else Create user @endif</h1>
-{!! Form::open(['route'=>'users.store', 'method'=>'POST', 'class' => 'user']) !!}
 @if($edit)
 {!! Form::model($user,['route'=>['users.update',$user->id], 'method'=>'PUT','class' => 'user']) !!}
 @else
@@ -18,7 +17,7 @@
   </div>
   <div class="row">
     <div class="col mb-3">
-      {!! Form::text('phone',null,['class'=>'form-control  form-control-user', 'placeholder'=>'Phone', 'required' => 'required']) !!}
+      {!! Form::text('phone',null,['class'=>'form-control  form-control-user', 'placeholder'=>'Phone']) !!}
     </div>
     <div class="col mb-3">
       {!! Form::text('address',null,['class'=>'form-control  form-control-user', 'placeholder'=>'Address', 'required' => 'required']) !!}
@@ -26,7 +25,7 @@
   </div>
   <div class="row">
     <div class="col mb-3">
-    {!! Form::select('roles',$roles,null,['class'=>'form-control', 'placeholder'=>'Select Rol', 'required' => 'required']) !!}
+    {!! Form::select('roles',$roles,($edit)?$user->getRoleNames()->first():null,['class'=>'form-control', 'placeholder'=>'Select Rol', 'required' => 'required']) !!}
   </div>
     <div class="col mb-3">
       {!! Form::text('birthday',null,['class'=>'form-control  form-control-user datepicker', 'placeholder'=>'Birthday']) !!}

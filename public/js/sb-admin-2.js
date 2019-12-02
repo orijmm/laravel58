@@ -46,24 +46,46 @@
     e.preventDefault();
   });
 
-  $(document).ready(function() {
-    $('#dataTable').DataTable();
-  });
 
   $(document).on('click','.btn-delete', function(){
-    console.log(sii);
-    /*swal({
-      title: 'are you sure?',
-      text: 'You are about to delete this record',
+    var model = $(this).data('model');
+    var url = $(this).data('url');
+    swal({
+      title: 'Are you sure?',
+      text: "You are going to delete this "+model,
       icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        console.log('prueba');
+       buttons: {
+        cancel: true,
+        confirm: true,
+      },
+    }).then(result => {
+      if (result) {
+        $.ajax({
+          url:url,
+          dataType: "json",
+              type: 'delete',
+              data: {
+                  "_token": $("#gettoken").val()
+              },
+          success: function(response){
+            swal({
+              icon: 'success',
+              title: response.message,
+            });
+            //get new list data
+
+            //redraw table
+          },
+          failure: function(response){
+            swal({
+              title: response.message,
+              icon: 'warning',
+
+            });
+          }
+        }) 
       }
-    });*/
+    })
   });
 
 })(jQuery); // End of use strict

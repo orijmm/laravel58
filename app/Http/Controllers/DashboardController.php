@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Alert;
+use App\Presentacion;
 
 class DashboardController extends Controller
 {
@@ -20,6 +21,7 @@ class DashboardController extends Controller
 
     public function home(){
 
-   		return view('home');
+   		$presentaciones = Presentacion::find(1);
+        return view('home', compact('presentaciones'));
     }
 }

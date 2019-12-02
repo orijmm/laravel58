@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="row">
-    Dashboard
+    Dashboardd	sdfgg
 </div>
 @endsection

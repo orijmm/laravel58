@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateUser;
 use App\User;
 use Spatie\Permission\Models\Role;
 use DB;
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::orderBy('id','DESC')->get();
+        $data = User::with('roles')->get();
         return view('dashboard.users.index',compact('data'));
     }
 
@@ -49,15 +50,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUser $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'roles' => 'required'
-        ]);
-
-
         $input = $request->all();
         $input['password'] = Hash::make('password');
 
@@ -93,10 +87,8 @@ class UserController extends Controller
         $edit = true;
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
 
-
-        return view('dashboard.users.create-edit',compact('user','roles','userRole', 'edit'));
+        return view('dashboard.users.create-edit',compact('user','roles', 'edit'));
     }
 
     /**
@@ -144,8 +136,28 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+        if (User::find($id)->delete()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'User has been  deleted'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'There was an error deleting'                
+            ]);
+        }
+        
+    }
+
+    public function getUsers()
+    {
+        $data = User::with('roles')->get();
+       // $data->select(['name','email']);
+
+        //$data2 = db
+        return response()->json([
+                'data' => $data               
+            ]);
     }
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,7 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user_1 = App\User::create([
+        $admin = App\User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
@@ -23,8 +25,16 @@ class UsersTableSeeder extends Seeder
             'active' => 1,
             'remember_token' => Str::random(10),
         ]);
-        factory(App\User::class, 4)->create()->each(function ($user) {
-        $user->posts()->save(factory(App\Post::class)->make());
+
+        $admin->assignRole('admin');
+
+        factory(App\User::class, 4)->create()->each(function ($basicuser) {
+            $basicuser->assignRole('user');
         });
+        //factory(App\User::class, 4)->create();
+        /*factory(App\User::class, 4)->create()->each(function ($user) {
+        $user->posts()->save(factory(App\Post::class)->make());
+        });*/
+
     }
 }

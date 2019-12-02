@@ -12,5 +12,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'contenido'=> $faker->text($maxNbChars = 200),
         'fecha'=> $faker->dateTime($max = 'now', $timezone = null),
         'descripcion'=> $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'user_id' => \App\User::orderByRaw('RAND()')->first()->id,
     ];
 });

@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class PermissionTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +13,11 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        $permissions = [
+        $admin = Role::create([
+            'name' => 'admin'            
+        ]);
+
+        $admin->syncPermissions([
            'role-list',
            'role-create',
            'role-edit',
@@ -23,11 +28,10 @@ class PermissionTableSeeder extends Seeder
            'user-delete',
            'system-admin',
            'configuration'
-        ];
+        ]);
 
-
-        foreach ($permissions as $permission) {
-             Permission::create(['name' => $permission]);
-        }
+        $simpleuser = Role::create([
+            'name' => 'user'            
+        ]);
     }
 }

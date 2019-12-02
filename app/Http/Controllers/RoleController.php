@@ -50,11 +50,6 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
-        ]);
-
 
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
@@ -72,12 +67,8 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
-        $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
-            ->where("role_has_permissions.role_id",$id)
-            ->get();
 
-
-        return view('dashboard.roles.show',compact('role','rolePermissions'));
+        return view('dashboard.roles.show',compact('role'));
     }
 
     /**
@@ -88,7 +79,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $edit = 'true';
+        $edit = true;
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
@@ -116,7 +107,7 @@ class RoleController extends Controller
 
         $role = Role::find($id);
         $role->name = $request->input('name');
-        $role->save();
+        $role->update();
 
 
         $role->syncPermissions($request->input('permission'));
@@ -134,8 +125,16 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('roles.index')
-                        ->with('success','Role deleted successfully');
+        if (Role::find($id)->delete()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Role has been  deleted'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'There was an error deleting'                
+            ]);
+        }
     }
 }

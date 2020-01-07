@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Create User')
+
 @section('content')
 <h1 class="h3 mb-4 text-gray-800">@if($edit) Edit User @else Create user @endif</h1>
 @if($edit)

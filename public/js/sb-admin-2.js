@@ -27,6 +27,11 @@
     }
   });
 
+  //datatable
+$(document).ready(function() {
+  $('#dataTable').DataTable();
+});
+
   // Scroll to top button appear
   $(document).on('scroll', function() {
     var scrollDistance = $(this).scrollTop();
@@ -73,14 +78,13 @@
               title: response.message,
             });
             //get new list data
-
+            $('.content-table').html(response.view);
             //redraw table
           },
           failure: function(response){
             swal({
               title: response.message,
               icon: 'warning',
-
             });
           }
         }) 

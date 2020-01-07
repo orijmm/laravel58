@@ -28,8 +28,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::with('roles')->get();
-        return view('dashboard.users.index',compact('data'));
+        $users = User::with('roles')->get();
+        return view('dashboard.users.index',compact('users'));
     }
 
     /**
@@ -137,9 +137,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         if (User::find($id)->delete()) {
+            $users = User::with('roles')->get();
             return response()->json([
                 'success' => true,
-                'message' => 'User has been  deleted'
+                'message' => 'User has been  deleted',
+                'view' => view('dashboard.users.list', compact('users'))->render()
             ]);
         } else {
             return response()->json([

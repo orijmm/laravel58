@@ -1,5 +1,5 @@
 <input type="hidden" id="gettoken" value="{{csrf_token()}}">
-<div class="table-responsive content-table">
+<div class="table-responsive">
 	<table class="table align-items-center" id="dataTable">
 		<thead class="thead-light">
 			<tr>

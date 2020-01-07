@@ -25,7 +25,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('auth.logout');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::resource('permissions','PermissionController');
     Route::get('users/getusers/all','UserController@getUsers')->name('users.getusers');  
+    Route::post('permissions/save', 'PermissionController@savePermissions')->name('permissions.save');
 
     Route::get('/dashboard', 'DashboardController@home')->name('dashboard');
 

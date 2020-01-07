@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="Oriana Marquina">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('js/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

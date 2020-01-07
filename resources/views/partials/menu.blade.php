@@ -32,21 +32,21 @@
   <li class="nav-item active">
     <a class="nav-link" href="{{route('users.index')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Usuarios</span></a>
+      <span>Users</span></a>
   </li>
 
   <!-- Nav Item - Utilities Collapse Menu -->
   <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
-      <span>Sistema</span>
+      <span>System</span>
     </a>
     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Gestion del sistema:</h6>
-        <a class="collapse-item" href="{{route('roles.index')}}">Roles</a>
-        <a class="collapse-item" href="utilities-border.html">Permisos</a>
-        <a class="collapse-item" href="utilities-animation.html">Configuración</a>
+        <h6 class="collapse-header">System Manage:</h6>
+        <a class="collapse-item" href="{{route('roles.index')}}">Role</a>
+        <a class="collapse-item" href="{{route('permissions.index')}}">Permissions</a>
+        <a class="collapse-item" href="utilities-animation.html">Settings</a>
       </div>
     </div>
   </li>

@@ -46,7 +46,7 @@
         <h6 class="collapse-header">System Manage:</h6>
         <a class="collapse-item" href="{{route('roles.index')}}">Role</a>
         <a class="collapse-item" href="{{route('permissions.index')}}">Permissions</a>
-        <a class="collapse-item" href="utilities-animation.html">Settings</a>
+        <a class="collapse-item" href="{{route('general.setting')}}">Settings</a>
       </div>
     </div>
   </li>

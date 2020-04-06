@@ -32,5 +32,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', 'DashboardController@home')->name('dashboard');
 
     //test charts
+    Route::get('setting/all', 'SettingController@index')->name('general.setting');
+
+    //test charts
     Route::get('chart', 'ChartController@index');
 });

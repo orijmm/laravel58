@@ -22,6 +22,6 @@ class DashboardController extends Controller
     public function home(){
 
    		$presentaciones = Presentacion::find(1);
-        return view('home', compact('presentaciones'));
+        return view('dashboard/home', compact('presentaciones'));
     }
 }

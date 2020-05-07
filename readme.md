@@ -10,5 +10,5 @@
 
 ### php artisan migrate --seed
 
-# user: admin
+# user: admin@gmail.com
 # pass: password

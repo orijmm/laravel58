@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     //test charts
     Route::get('setting/all', 'SettingController@index')->name('general.setting');
-    Route::get('setting/update', 'SettingController@updateSettings')->name('update.setting');
+    Route::put('setting/update', 'SettingController@updateSettings')->name('update.setting');
 
 
     //test charts

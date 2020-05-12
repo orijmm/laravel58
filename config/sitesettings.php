@@ -2,7 +2,13 @@
 
 return [
 
-'logo' => null,
+'logo' => 'https://picsum.photos/200',
+
+'address' => [
+	'location' => 'algo',
+	'phones' => null,
+	'email' => null,
+],
 
 'social_media' => [
 
@@ -10,11 +16,6 @@ return [
 	'instagram' => null,
 	'twitter' => null,
 	'youtube' => null,
-],
-
-'footer' => [
-	'address' => null,
-	'other' => null
 ],
 
 'country' => null,

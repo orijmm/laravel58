@@ -33,7 +33,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-primary text-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -78,8 +78,8 @@
               @else
               
               <div class="navbar-nav ml-auto">
-                <div class="topbar-divider d-none d-sm-block"></div><a class="text-primary  mr-2" href="{{route('login')}}">Login</a>
-              <a class="text-primary" href="{{route('register')}}">Register</a></div>
+                <div class="topbar-divider d-none d-sm-block"></div><a class="text-white  mr-2" href="{{route('login')}}">Login</a>  
+              <a class="text-white" href="{{route('register')}}">| Register</a></div>
               @endif
         </nav>
         <!-- End of Topbar -->

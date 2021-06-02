@@ -1,10 +1,10 @@
 ## Laravel starter site
 
-### Modulo de usuarios
+- Modulo de usuarios
 
-### Roles y permisos (spatie)
+- Roles y permisos (spatie)
 
-### Dashboard sb-admin-2
+- Dashboard sb-admin-2
 ## Instalacion
 
 ### composer install

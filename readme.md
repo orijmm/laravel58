@@ -1,23 +1,31 @@
-## Laravel starter site
+# Laravel Framework 7.0 Starter Site
+## Features / Caracteristicas
 
-- Modulo de usuarios
+- Users Module / Modulo de usuarios
 
-- Roles y permisos (spatie)
+- Role and Permissions / Roles y permisos (spatie)
 
-- Dashboard sb-admin-2
-## Instalacion
+- Dashboard **sb-admin-2**
 
-### composer install
+- Module activitylog / Modulo de registro **spatie**
 
-### .env 
+- Modal notifications / notificaciones modal **sweet-alert**
+## Install / Instalacion 
 
-### php artisan key:generate
+- git clone https://github.com/orijmm/startersite7.git
 
-### npm install
+- composer install
 
-### Config database env
+- config .env 
 
-### php artisan migrate --seed
+- php artisan key:generate
 
-### user: admin@gmail.com
-### pass: password
+- npm install
+
+- Config database env
+
+- php artisan migrate --seed
+
+### Login 
+- user: admin@gmail.com
+- pass: password
